@@ -51,6 +51,11 @@ int main()
             }
 
             case TTYPE_STRING : {
+                std::cout << "Enter your requirement : ";
+                std::string requirement;
+                fflush(stdin);
+                std::getline(std::cin, requirement);
+                Generator::generateStrings(numberOfDataPoints, requirement, keyValues[i]);
                 break;
             }
         }
