@@ -53,7 +53,6 @@ void Generator::generateFloat(unsigned int numberOfDataPoints, float low, float 
         {
             TestValue* newObject = new AnyType<float>(output);
             values.push_back(newObject);
-            std::cout << *newObject << std::endl;
         }
     }
 }
