@@ -17,6 +17,7 @@ class TestValue
             std::cout << "1. FLOATING-POINT" << std::endl;
             std::cout << "2. STRING" << std::endl;
         }
+        virtual void print(std::ostream& osStream) = 0;
         ~TestValue() {}
 };
 
@@ -35,6 +36,17 @@ class AnyType : public TestValue
         {
             return anyValue;
         }
+
+        void print(std::ostream& osStream) override 
+        {
+            osStream << anyValue;
+        }
 };
+
+std::ostream& operator<<(std::ostream& osStream, TestValue& valOut) 
+{
+  valOut.print(osStream);
+  return osStream;
+}
 
 #endif
