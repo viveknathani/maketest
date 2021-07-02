@@ -5,6 +5,7 @@ import (
 	"math/rand"
 	"strconv"
 	"strings"
+	"time"
 )
 
 // GenerateStrings will fill up the given array with generated strings.
@@ -41,6 +42,7 @@ func GenerateStrings(numberOfDataPoints uint64, requirement string, arr *[]Any) 
 		fmt.Println("something went wrong")
 	}
 
+	rand.Seed(time.Now().Unix())
 	for i := uint64(0); i < numberOfDataPoints; i++ {
 
 		var str string
