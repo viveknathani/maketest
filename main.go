@@ -4,6 +4,7 @@ import (
 	"bufio"
 	"fmt"
 	"os"
+	"runtime"
 
 	"github.com/viveknathani/maketest/pkg/exporter"
 	"github.com/viveknathani/maketest/pkg/generators"
@@ -60,21 +61,29 @@ var (
 	keyValues          [][]generators.Any
 )
 
+func printColor(colorName string) {
+
+	os := runtime.GOOS
+	if os != "windows" {
+		fmt.Print(colorName)
+	}
+}
+
 func main() {
 
-	fmt.Print(colorCyan)
+	printColor(colorCyan)
 	fmt.Println(asciiLogo)
 	fmt.Println(introText)
-	fmt.Println(colorReset)
+	printColor(colorReset)
 
-	fmt.Print(colorYellow)
+	printColor(colorYellow)
 	fmt.Print(askDataPointCount)
-	fmt.Print(colorReset)
+	printColor(colorReset)
 	fmt.Scan(&numberOfDataPoints)
 
-	fmt.Print(colorYellow)
+	printColor(colorYellow)
 	fmt.Print(askKeyCount)
-	fmt.Print(colorReset)
+	printColor(colorReset)
 	fmt.Scan(&numberOfKeys)
 
 	keyNames = make([]string, numberOfKeys)
@@ -86,18 +95,18 @@ func main() {
 
 	for i := uint64(0); i < numberOfKeys; i++ {
 
-		fmt.Print(colorYellow)
+		printColor(colorYellow)
 		fmt.Printf(askKeyName, i)
-		fmt.Print(colorReset)
+		printColor(colorReset)
 		fmt.Scan(&keyNames[i])
 
-		fmt.Print(colorPink)
+		printColor(colorPink)
 		utils.PrintMenu()
-		fmt.Print(colorReset)
+		printColor(colorReset)
 
-		fmt.Print(colorYellow)
+		printColor(colorYellow)
 		fmt.Print(askDataType)
-		fmt.Print(colorReset)
+		printColor(colorReset)
 		var dataType uint8
 		fmt.Scan(&dataType)
 
@@ -108,14 +117,14 @@ func main() {
 			var low int64
 			var high int64
 
-			fmt.Print(colorYellow)
+			printColor(colorYellow)
 			fmt.Print(askLowerValue)
-			fmt.Print(colorReset)
+			printColor(colorReset)
 			fmt.Scan(&low)
 
-			fmt.Print(colorYellow)
+			printColor(colorYellow)
 			fmt.Print(askHigherValue)
-			fmt.Print(colorReset)
+			printColor(colorReset)
 			fmt.Scan(&high)
 
 			generators.GenerateInts(numberOfDataPoints, low, high, &keyValues[i])
@@ -125,27 +134,27 @@ func main() {
 			var low float64
 			var high float64
 
-			fmt.Print(colorYellow)
+			printColor(colorYellow)
 			fmt.Print(askLowerValue)
-			fmt.Print(colorReset)
+			printColor(colorReset)
 			fmt.Scan(&low)
 
-			fmt.Print(colorYellow)
+			printColor(colorYellow)
 			fmt.Print(askHigherValue)
-			fmt.Print(colorReset)
+			printColor(colorReset)
 			fmt.Scan(&high)
 
 			generators.GenerateRealValues(numberOfDataPoints, low, high, &keyValues[i])
 
 		case utils.TYPE_STRING:
 
-			fmt.Print(colorBlue)
+			printColor(colorBlue)
 			fmt.Print(requirementSpecs)
-			fmt.Print(colorReset)
+			printColor(colorReset)
 
-			fmt.Print(colorYellow)
+			printColor(colorYellow)
 			fmt.Print(askRequirement)
-			fmt.Print(colorReset)
+			printColor(colorReset)
 			var requirement string
 			reader := bufio.NewScanner(os.Stdin)
 			if reader.Scan() {
@@ -162,7 +171,9 @@ func main() {
 	}
 
 	exporter.ExportJSON(numberOfDataPoints, numberOfKeys, keyNames, keyValues)
-	fmt.Println(colorGreen)
+	printColor(colorGreen)
+	fmt.Println()
 	fmt.Println(closingText)
-	fmt.Println(colorReset)
+	printColor(colorReset)
+	fmt.Println()
 }
