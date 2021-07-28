@@ -2,7 +2,7 @@
 
 [![Go Report Card](https://goreportcard.com/badge/github.com/viveknathani/maketest)](https://goreportcard.com/report/github.com/viveknathani/maketest)
 
-<img src='./screenshot.png'>
+<img src='./screenshot.PNG'>
 
 ## build
 
