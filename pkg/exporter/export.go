@@ -42,4 +42,9 @@ func ExportJSON(numberOfDataPoints uint64, numberOfKeys uint64,
 		fmt.Fprintln(file)
 	}
 	fmt.Fprintln(file, "]")
+
+	err = file.Close()
+	if err != nil {
+		log.Fatal(err)
+	}
 }
