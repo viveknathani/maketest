@@ -5,7 +5,7 @@ import (
 	"log"
 	"os"
 
-	"github.com/viveknathani/maketest/pkg/generators"
+	"github.com/viveknathani/maketest/generators"
 )
 
 // ExportJSON will export the input values to a JSON file.

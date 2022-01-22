@@ -6,9 +6,9 @@ import (
 	"os"
 	"runtime"
 
-	"github.com/viveknathani/maketest/pkg/exporter"
-	"github.com/viveknathani/maketest/pkg/generators"
-	"github.com/viveknathani/maketest/pkg/utils"
+	"github.com/viveknathani/maketest/exporter"
+	"github.com/viveknathani/maketest/generators"
+	"github.com/viveknathani/maketest/utils"
 )
 
 const (
