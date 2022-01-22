@@ -6,7 +6,7 @@
 
 ## build
 
-Code is written in Go `v1.16`.
+Code is written in Go `v1.17`.
 After getting that, run, 
 ```bash
     go build 
