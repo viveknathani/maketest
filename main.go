@@ -70,7 +70,7 @@ func printColor(colorName string) {
 	}
 }
 
-func main() {
+func askCountOfKeysAndDataPoints() {
 
 	printColor(colorCyan)
 	fmt.Println(asciiLogo)
@@ -86,6 +86,9 @@ func main() {
 	fmt.Print(askKeyCount)
 	printColor(colorReset)
 	fmt.Scan(&numberOfKeys)
+}
+
+func allocateForKeyNamesAndValues() {
 
 	keyNames = make([]string, numberOfKeys)
 	keyValues = make([][]generators.Any, numberOfKeys)
@@ -93,6 +96,12 @@ func main() {
 	for i := uint64(0); i < numberOfKeys; i++ {
 		keyValues[i] = make([]generators.Any, numberOfDataPoints)
 	}
+}
+
+func main() {
+
+	askCountOfKeysAndDataPoints()
+	allocateForKeyNamesAndValues()
 
 	for i := uint64(0); i < numberOfKeys; i++ {
 
@@ -170,6 +179,11 @@ func main() {
 			generators.GenerateUUIDs(numberOfDataPoints, &keyValues[i])
 		}
 	}
+
+	exportToJSONAndTerminate()
+}
+
+func exportToJSONAndTerminate() {
 
 	exporter.ExportJSON(numberOfDataPoints, numberOfKeys, keyNames, keyValues)
 	printColor(colorGreen)
