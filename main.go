@@ -8,7 +8,6 @@ import (
 
 	"github.com/viveknathani/maketest/exporter"
 	"github.com/viveknathani/maketest/generators"
-	"github.com/viveknathani/maketest/utils"
 )
 
 const (
@@ -53,6 +52,11 @@ const (
 		"Check the release.json file under the root of the current directory.\n" +
 		"Thank you for using maketest!\n" +
 		"- Vivek (github.com/viveknathani)\n"
+	TYPE_INTEGER = uint8(0)
+	TYPE_REAL    = uint8(1)
+	TYPE_STRING  = uint8(2)
+	TYPE_DATE    = uint8(3)
+	TYPE_UUID    = uint8(4)
 )
 
 var (
@@ -61,6 +65,14 @@ var (
 	keyNames           []string
 	keyValues          [][]generators.Any
 )
+
+func printMenu() {
+	fmt.Println("0. INTEGER")
+	fmt.Println("1. FLOATING-POINT")
+	fmt.Println("2. STRING")
+	fmt.Println("3. DATE")
+	fmt.Println("4. UUID")
+}
 
 func printColor(colorName string) {
 
@@ -111,7 +123,7 @@ func main() {
 		fmt.Scan(&keyNames[i])
 
 		printColor(colorPink)
-		utils.PrintMenu()
+		printMenu()
 		printColor(colorReset)
 
 		printColor(colorYellow)
@@ -122,7 +134,7 @@ func main() {
 
 		switch dataType {
 
-		case utils.TYPE_INTEGER:
+		case TYPE_INTEGER:
 
 			var low int64
 			var high int64
@@ -139,7 +151,7 @@ func main() {
 
 			generators.GenerateInts(numberOfDataPoints, low, high, &keyValues[i])
 
-		case utils.TYPE_REAL:
+		case TYPE_REAL:
 
 			var low float64
 			var high float64
@@ -156,7 +168,7 @@ func main() {
 
 			generators.GenerateRealValues(numberOfDataPoints, low, high, &keyValues[i])
 
-		case utils.TYPE_STRING:
+		case TYPE_STRING:
 
 			printColor(colorBlue)
 			fmt.Print(requirementSpecs)
@@ -172,10 +184,10 @@ func main() {
 			}
 			generators.GenerateStrings(numberOfDataPoints, requirement, &keyValues[i])
 
-		case utils.TYPE_DATE:
+		case TYPE_DATE:
 			generators.GenerateDates(numberOfDataPoints, &keyValues[i])
 
-		case utils.TYPE_UUID:
+		case TYPE_UUID:
 			generators.GenerateUUIDs(numberOfDataPoints, &keyValues[i])
 		}
 	}
