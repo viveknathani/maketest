@@ -1,6 +1,6 @@
 # maketest
 
-[![Go Report Card](https://goreportcard.com/badge/github.com/viveknathani/maketest)](https://goreportcard.com/report/github.com/viveknathani/maketest) [![Maintainability](https://api.codeclimate.com/v1/badges/58bb6c8d321505b66857/maintainability)](https://codeclimate.com/github/viveknathani/maketest/maintainability) ![release](https://img.shields.io/github/v/release/viveknathani/maketest)
+[![test](https://github.com/viveknathani/maketest/actions/workflows/test.yaml/badge.svg)](https://github.com/viveknathani/maketest/actions/workflows/test.yaml) [![Go Report Card](https://goreportcard.com/badge/github.com/viveknathani/maketest)](https://goreportcard.com/report/github.com/viveknathani/maketest) [![Maintainability](https://api.codeclimate.com/v1/badges/58bb6c8d321505b66857/maintainability)](https://codeclimate.com/github/viveknathani/maketest/maintainability) ![release](https://img.shields.io/github/v/release/viveknathani/maketest)
 
 <img src='./screenshot.PNG'>
 
